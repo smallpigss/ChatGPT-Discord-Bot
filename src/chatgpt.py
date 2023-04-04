@@ -45,7 +45,7 @@ This is the example of "Midjourney prompt":
 /imagine prompt: A stunning girl at the purple neon city under the red sky, wearing a holographic clothes. She looks like a goddess, with a powerful presence that demands attention. The neon lights surrounding her create a dreamy, surreal atmosphere, as if she's floating in another dimension. Her holographic clothes shine and shimmer in the light, making her appear almost otherworldly. Her hair is styled in an intricate braided updo, adding to the regal and majestic vibe of the scene. Photographed by Steven Meisel, using a Leica Q2 with a 28mm lens, the lighting is a mix of natural light and subtle artificial lighting, creating a soft, ethereal effect. --v 5 --q 2
 ---
 
-This is your task: You will generate 4 prompts for each concept [1],[2] and each of your prompts will be a different approach in its description, environment, atmosphere, and realization.
+This is your task: You will generate 2 prompts for each concept [1],[2] and each of your prompts will be a different approach in its description, environment, atmosphere, and realization.
 Do not write '[2]' or '[3]' in the Midjourney prompt. 
 After 4 prompts were written, your last task is to print this message.
 
