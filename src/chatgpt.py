@@ -6,6 +6,10 @@ class ChatGPT:
     def __init__(self, model: ModelInterface, memory: MemoryInterface):
         self.model = model
         self.memory = memory
+        self.language = "English"
+    
+    def set_language(self, language: str):
+        self.language = language
 
     def get_response(self, user_id: str, text: str) -> str:
         self.memory.append(user_id, {'role': 'user', 'content': text})

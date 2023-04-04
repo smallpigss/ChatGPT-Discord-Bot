@@ -45,6 +45,16 @@ def run():
         else:
             receive = chatgpt.get_response(user_id, message)
         await sender.send_message(interaction, message, receive)
+    
+    @client.tree.command(name="chat-language", description="Switch chat language")
+    @app_commands.choices(choices=[
+        app_commands.Choice(name="英文", value="English"),
+        app_commands.Choice(name="中文", value="Chinese"),
+    ])
+    async def language(interaction: discord.Interaction, choices: app_commands.Choice[str]):
+        await interaction.response.defer(ephemeral=False)
+        chatgpt.set_language(choices.value)
+        await interaction.followup.send(f"> **INFO: 已经切换至 {choices.value}.**\n")
 
     # @client.tree.command(name="mj", description="Generate a chat with ChatGPT for midjourney")
     # async def midjourney(interaction: discord.Interaction, *, message: str):
