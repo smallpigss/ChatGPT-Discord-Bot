@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import discord
 
+from discord import app_commands
 from src.discordBot import DiscordClient, Sender
 from src.logger import logger
 from src.chatgpt import ChatGPT, DALLE
@@ -25,22 +26,31 @@ def run():
     sender = Sender()
 
     @client.tree.command(name="chat", description="Have a chat with ChatGPT")
-    async def chat(interaction: discord.Interaction, *, message: str):
+    @app_commands.choices(choices=[
+        app_commands.Choice(name="No Effect", value="None"),
+        app_commands.Choice(name="Midjourney", value="Midjourney"),
+    ])
+    async def chat(interaction: discord.Interaction, *, message: str, choices: app_commands.Choice[str]):
         user_id = interaction.user.id
         if interaction.user == client.user:
             return
         await interaction.response.defer()
-        receive = chatgpt.get_response(user_id, message)
+        if choices.value == "None":
+            receive = chatgpt.get_response(user_id, message)
+        elif choices.value == "Midjourney":
+            receive = chatgpt.get_midjourney_response(user_id, message)
+        else:
+            receive = chatgpt.get_response(user_id, message)
         await sender.send_message(interaction, message, receive)
 
-    @client.tree.command(name="mj", description="Generate a chat with ChatGPT for midjourney")
-    async def midjourney(interaction: discord.Interaction, *, message: str):
-        user_id = interaction.user.id
-        if interaction.user == client.user:
-            return
-        await interaction.response.defer()
-        receive = chatgpt.get_midjourney_response(user_id, message)
-        await sender.send_message(interaction, message, receive)
+    # @client.tree.command(name="mj", description="Generate a chat with ChatGPT for midjourney")
+    # async def midjourney(interaction: discord.Interaction, *, message: str):
+    #     user_id = interaction.user.id
+    #     if interaction.user == client.user:
+    #         return
+    #     await interaction.response.defer()
+    #     receive = chatgpt.get_midjourney_response(user_id, message)
+    #     await sender.send_message(interaction, message, receive)
 
     @client.tree.command(name="imagine", description="Generate image from text")
     async def imagine(interaction: discord.Interaction, *, prompt: str):
