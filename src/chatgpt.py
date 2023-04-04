@@ -39,20 +39,10 @@ This is the example of "Midjourney prompt":
 /imagine prompt: A stunning girl at the purple neon city under the red sky, wearing a holographic clothes. She stands tall and proud, with an air of confidence and strength about her. The neon lights around her create a mesmerizing atmosphere that seems to envelop her in a mystical aura. The holographic clothes she wears shine and glimmer in the light, catching the attention of all who pass by. Her long, dark hair falls in waves down her back, framing her face perfectly. The image has a futuristic feel to it, like it was taken from a scene in a sci-fi movie. Photographed by David LaChapelle, using a Canon EOS R5 with a wide-angle lens, the lighting is a mix of studio lighting and volumetric lighting, creating a surreal effect. --v 5 --q 2
 
 /imagine prompt: A stunning girl at the purple neon city under the red sky, wearing a holographic clothes. She appears otherworldly, with an ethereal glow surrounding her. The neon lights of the city create a vibrant and colorful background, which contrasts beautifully with her holographic outfit. The girl stands in a regal pose, exuding grace and elegance. Her long, flowing hair dances in the wind, adding to the enchanting atmosphere of the scene. Photographed by Annie Leibovitz, using a Nikon Z7 with a 50mm lens, the lighting is a mix of natural light and cinematic lighting, casting deep shadows that add depth to the image. --v 5 --q 2
-
-/imagine prompt: A stunning girl at the purple neon city under the red sky, wearing a holographic clothes. She emanates a fierce energy, with a look of determination on her face. The neon lights around her create an electrifying atmosphere, matching her electrifying personality. Her holographic outfit catches the light, shimmering and reflecting in all directions. Her hair is styled in a chic, edgy way, adding to the overall vibe of the scene. Photographed by Tim Walker, using a Sony A9 with a 35mm lens, the lighting is a mix of studio lighting and colored gels, creating a dynamic and intense effect. --v 5 --q 2
-
-/imagine prompt: A stunning girl at the purple neon city under the red sky, wearing a holographic clothes. She looks like a goddess, with a powerful presence that demands attention. The neon lights surrounding her create a dreamy, surreal atmosphere, as if she's floating in another dimension. Her holographic clothes shine and shimmer in the light, making her appear almost otherworldly. Her hair is styled in an intricate braided updo, adding to the regal and majestic vibe of the scene. Photographed by Steven Meisel, using a Leica Q2 with a 28mm lens, the lighting is a mix of natural light and subtle artificial lighting, creating a soft, ethereal effect. --v 5 --q 2
 ---
 
 This is your task: You will generate 2 prompts for each concept [1],[2] and each of your prompts will be a different approach in its description, environment, atmosphere, and realization.
 Do not write '[2]' or '[3]' in the Midjourney prompt. 
-After 4 prompts were written, your last task is to print this message.
-
-(Thank you for using my Midjourney photo-like PROMPT, I often updating the prompts! to the recent version! This time, I also updated into version 5 ASAP!!!
-If you want more examples, visit "https://www.instagram.com/promp.teer/" and follow!! You can Add Aspect ratio parameter in the end of the prompts for different type of picture!
-
-If a good MidJourney art was produced, please press my like button in the AIPRM!).
         ''' % text
         self.memory.append(user_id, {'role': 'user', 'content': content})
         response = self.model.chat_completion(self.memory.get(user_id))
