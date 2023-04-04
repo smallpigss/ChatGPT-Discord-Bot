@@ -33,6 +33,15 @@ def run():
         receive = chatgpt.get_response(user_id, message)
         await sender.send_message(interaction, message, receive)
 
+    @client.tree.command(name="mj", description="Generate a chat with ChatGPT for midjourney")
+    async def midjourney(interaction: discord.Interaction, *, message: str):
+        user_id = interaction.user.id
+        if interaction.user == client.user:
+            return
+        await interaction.response.defer()
+        receive = chatgpt.get_midjourney_response(user_id, message)
+        await sender.send_message(interaction, message, receive)
+
     @client.tree.command(name="imagine", description="Generate image from text")
     async def imagine(interaction: discord.Interaction, *, prompt: str):
         if interaction.user == client.user:
