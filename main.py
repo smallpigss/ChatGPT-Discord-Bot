@@ -29,6 +29,7 @@ def run():
     @app_commands.choices(choices=[
         app_commands.Choice(name="No Effect", value="None"),
         app_commands.Choice(name="Midjourney", value="Midjourney"),
+        app_commands.Choice(name="BlockChain", value="BlockChain"),
     ])
     async def chat(interaction: discord.Interaction, *, message: str, choices: app_commands.Choice[str]):
         user_id = interaction.user.id
@@ -39,6 +40,8 @@ def run():
             receive = chatgpt.get_response(user_id, message)
         elif choices.value == "Midjourney":
             receive = chatgpt.get_midjourney_response(user_id, message)
+        elif choices.value == "BlockChain":
+            receive = chatgpt.get_block_response(user_id, message)
         else:
             receive = chatgpt.get_response(user_id, message)
         await sender.send_message(interaction, message, receive)
